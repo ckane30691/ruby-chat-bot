@@ -1,17 +1,17 @@
 require 'yaml'
 
 bot_data = {
-  :presubs => [
-    ["dont", "do not"],
-    ["don't", "do not"],
-    ["youre", "you're"],
-    ["love", "like"],
-    ["apologize", "are sorry"],
-    ["dislike", "hate"],
-    ["despise", "hate"],
-    ["yeah", "yes"],
-    ["mom", "family"]
-    ],
+    :presubs   => [
+      ["dont", "do not"],
+      ["don't", "do not"],
+      ["youre", "you're"],
+      ["love", "like"],
+      ["apologize", "are sorry"],
+      ["dislike", "hate"],
+      ["despise", "hate"],
+      ["yeah", "yes"],
+      ["mom", "family"]
+      ],
 
     :responses => {
       :default           => [
