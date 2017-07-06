@@ -1,5 +1,4 @@
 require 'yaml'
-require 'byebug'
 require_relative 'wordplay'
 
 class Bot
