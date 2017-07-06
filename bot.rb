@@ -1,5 +1,6 @@
 require 'yaml'
-require_relative './WordPlay/wordplay'
+require 'byebug'
+require_relative 'wordplay'
 
 class Bot
   attr_reader :name
@@ -24,7 +25,7 @@ class Bot
   def response_to(input)
     prepared_input = preprocess(input.downcase)
     sentence = best_sentence(prepared_input)
-    reversed_sentence = WordPlay.switch_pronouns
+    reversed_sentence = WordPlay.switch_pronouns(sentence)
     responses = possible_responses(sentence)
     responses[rand(responses.length)]
   end
@@ -42,13 +43,14 @@ class Bot
 
   def perform_substitutions(input)
     @data[:presubs].each { |s| input.gsub!(s[0], s[1]) }
+    input
   end
 
   def best_sentence(input)
     hot_words = @data[:responses].keys.select do |k|
       k.class == String && k =~ /^\w+$/
     end
-    WordPlay.best_sentence(input.sentences, hot_words)
+    WordPlay.best_sentence(input.to_s.sentences, hot_words)
   end
 
   def possible_responses(sentence)
@@ -57,8 +59,8 @@ class Bot
       next unless pattern.is_a?(String)
       if sentence.match('\b' + pattern.gsub(/\*/, '') + '\b')
         if pattern.include?('*')
-          response << @data[:responses][pattern].map do |phrase|
-            matching_section = sentence.sub(/^.*#{pattern}\s+/)
+          responses << @data[:responses][pattern].map do |phrase|
+            matching_section = sentence.sub(/^.*#{pattern}\s+/, '')
             phrase.sub('*', WordPlay.switch_pronouns(matching_section))
           end
         else

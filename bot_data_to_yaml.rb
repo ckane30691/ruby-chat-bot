@@ -32,18 +32,18 @@ bot_data = {
                             "How do you do?", 
                             "Enough with the pleasentries!"
                             ],
-      'sorry'            => ["There's no need to apologize"]
+      'sorry'            => ["There's no need to apologize"],
       'different'        => [
                             "How is it different",
                             "What's changed?"
                             ],
-      'everyone *'       => ["You think everyone *?"]
-      'do not know'      => ["Are you always this indecisive?"]
+      'everyone *'       => ["You think everyone *?"],
+      'do not know'      => ["Are you always this indecisive?"],
       'yes'              => [
                             "At least your positive about something!",
                             "Great."
                             ],
-      'family'           => ["Tell me about your family"]
+      'family'           => ["Tell me about your family"],
       'you are *'        => [
                             "What makes you think I am *?",
                             "Are you sure that I'm *?"
